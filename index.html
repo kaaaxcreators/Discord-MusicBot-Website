@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+  <title>Discord Music Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+  <meta name="description" content="A website to create your own Discord Music bot">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Discord Music Bot">
+  <meta property="og:url" content="https://discordbot.kaaaxcreators.de/">
+  <meta property="og:description" content="A website to create your own Discord Music bot">
+  <meta property="og:image" content="icon.png">
+  <meta name="theme-color" content="#9400D3">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="img/Music.gif" type="image/gif">
+</head>
+
+<body>
+  <noscript>
+    <div style="position: fixed; top: 0px; left: 0px; z-index: 30000000; 
+                height: 100%; width: 100%; background-color: #527cc9">
+      <p style="margin-left: 10px">JavaScript is not enabled.</p>
+    </div>
+  </noscript>
+  <div class="container">
+    <h1 class="title"><img src="img/Music.gif" id="spinning" height="auto" align="left">&nbsp;Discord Music Bot</h1>
+    <br>
+    <button class="btn shadow" id="replitBtn" onclick="replitSignup();">
+      <p>Sign up to Repl.it</p>
+    </button>
+    <br>
+    <button class="btn shadow" id="cloneBtn" onclick="cloneMusicbot();" disabled>
+      <p>Clone Discord Music Bot</p>
+    </button>
+    <br>
+    <button class="btn shadow" id="envBtn" onclick="replitEnv();" disabled>
+      <p>Setup Environment Variables</p>
+    </button>
+    <p class="text" id="envtut" style="display: none">
+      <span style="vertical-align: middle;">Click</span> <img src="img/secrets.svg" height="40px" style="vertical-align: middle;">
+      <br>
+      <span>Then Click "Open raw editor" and paste the text</span>
+    </p>
+    <br>
+    <button class="btn shadow" id="startBtn" onclick="startReplit();" disabled>
+      <p>Start your Repl.it project</p>
+    </button>
+    <br>
+    <br>
+    <button class="btn shadow" id="CronSignupBtn" onclick="cronSignup();" disabled>
+      <p>Sign up to cron-job</p>
+    </button>
+    <br>
+    <button class="btn shadow" id="CronCreateBtn" onclick="cronCreate();" disabled>
+      <p>Create new Cronjob</p>
+    </button>
+    <br>
+    <br>
+    <br>
+    <p class="text"><a class="footer" href="https://kaaaxcreators.de/datenschutz">Privacy Policy</a></p>
+  </div>
+  <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>

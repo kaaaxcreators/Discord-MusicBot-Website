@@ -1,0 +1,124 @@
+@font-face {
+    font-family: "Futura Std Medium";
+    src: url("https://db.onlinewebfonts.com/t/6e390d15863032277a741e08a6b18ce2.eot");
+    src:
+        url("https://db.onlinewebfonts.com/t/6e390d15863032277a741e08a6b18ce2.eot?#iefix") format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/6e390d15863032277a741e08a6b18ce2.woff2") format("woff2"),
+        url("https://db.onlinewebfonts.com/t/6e390d15863032277a741e08a6b18ce2.woff") format("woff"),
+        url("https://db.onlinewebfonts.com/t/6e390d15863032277a741e08a6b18ce2.ttf") format("truetype"),
+        url("https://db.onlinewebfonts.com/t/6e390d15863032277a741e08a6b18ce2.svg#Futura Std Medium") format("svg");
+    font-display: swap;
+}
+
+body {
+    color: #f5f5f5;
+    background-color: #527cc9;
+    font-family: "Futura Std Medium", Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.shadow {
+    padding: 10px;
+    box-shadow: 5px 10px 18px rgba(0, 0, 0, .3);
+    -webkit-appearance: none
+}
+
+.container {
+    opacity: 99.9999%;
+    margin: 0 40px;
+    text-align: center
+}
+
+.title {
+    font-size: 7em;
+    margin: 10px;
+    margin-bottom: 0
+}
+
+.subTitle {
+    font-size: 3em;
+    margin: 0
+}
+
+.text {
+    margin: 0;
+    font-size: 2em
+}
+
+.btn {
+    background-color: #2bb44b;
+    border-radius: 10px;
+    border: none;
+    color: #f5f5f5;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 0 7px;
+    transition: .3s;
+    margin: 10px 0;
+    width: 100%
+}
+
+.input {
+    border: none;
+    border-radius: 10px;
+    width: 100%
+}
+
+.btn:disabled {
+    opacity: 70%
+}
+
+.btn:hover:not(:disabled) {
+    background-color: #289e44;
+    cursor: pointer
+}
+
+.blue-btn {
+    background-color: #126688
+}
+
+.blue-btn:hover:not(:disabled) {
+    background-color: #0d4b63;
+    cursor: pointer
+}
+
+.socialButtons {
+    display: flex;
+    align-items: center
+}
+
+.input:focus {
+    outline: 0
+}
+
+.btn:focus {
+    outline: 0
+}
+
+.bottomNotice {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-size: 1em
+}
+
+.link {
+    color: #2bb44b
+}
+
+.link:visited {
+    color: #2bb44b
+}
+
+.footer,
+.footer:active,
+.footer:visited,
+.footer:focus {
+    color: #ffffff;
+    transition: .3s
+}
+.footer:hover {
+    color: #2bb44b
+}
