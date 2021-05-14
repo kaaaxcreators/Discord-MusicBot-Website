@@ -8,6 +8,7 @@ const CronCreateButton = document.getElementById('CronCreateBtn');
 const title = document.querySelector('.title');
 const spinning = document.getElementById('spinning');
 const envtut = document.getElementById('envtut');
+const tokenBtn = document.getElementById('tokenBtn');
 
 const replitSignup = () => {
     replitButton.disabled = true;
@@ -18,15 +19,22 @@ const replitSignup = () => {
 const cloneMusicbot = () => {
     cloneButton.disabled = true;
     window.open('https://repl.it/github/kaaaxcreators/Discord-MusicBot', '_blank');
-    envButton.disabled = false;
+    tokenBtn.disabled = false;
 };
+
+const getToken = () => {
+    tokenBtn.disabled = true;
+    alert('Click\n1. Your Application\n2. Bot in the left sidebar\n3. Under "TOKEN" "Copy"')
+    window.open('https://discord.com/developers/applications', '_blank');
+    envButton.disabled = false;
+}
 
 const replitEnv = () => {
     envButton.disabled = true;
-    const TOKEN = window.prompt("Discord Bot Token");
-    const PREFIX = window.prompt("The Prefix you want");
+    const TOKEN = window.prompt("Discord Bot Token\nYou copied it in the previous step");
+    const PREFIX = window.prompt("The Prefix you want\n<prefix>help. Example: !help", "!");
     const SOUNDCLOUD_CLIENT_ID = window.prompt("SoundCloud Client ID. Leave as is for default", "2t9loNQH90kzJcsFCODdigxfp325aq4z");
-    const PRESENCE = window.prompt("Bot Activity Text");
+    const PRESENCE = window.prompt("Bot Activity Text\nText underneath the Name of the Bot");
     const textarea = document.createElement('textarea');
     textarea.textContent = JSON.stringify({TOKEN, PREFIX, SOUNDCLOUD_CLIENT_ID, PRESENCE});
     textarea.style.position = 'fixed';
@@ -38,7 +46,7 @@ const replitEnv = () => {
         alert('Failed copying device auth to the clipboard!');
     }
     document.body.removeChild(textarea);
-    envButton.innerHTML = "<p>Successfully copied to clipboard!</p>";
+    envButton.innerHTML = "<p>Successfully copied to clipboard!</prefix>";
     envtut.style.display = "block"  
     startButton.disabled = false;
 };
