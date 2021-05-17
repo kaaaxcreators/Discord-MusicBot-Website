@@ -2,13 +2,13 @@ const replitButton = document.getElementById('replitBtn');
 const cloneButton = document.getElementById('cloneBtn');
 const envButton = document.getElementById('envBtn');
 const startButton = document.getElementById('startBtn');
-const urlInput = document.getElementById('replitInput');
 const cronsignupButton = document.getElementById('CronSignupBtn');
 const CronCreateButton = document.getElementById('CronCreateBtn');
 const title = document.querySelector('.title');
 const spinning = document.getElementById('spinning');
 const envtut = document.getElementById('envtut');
 const tokenBtn = document.getElementById('tokenBtn');
+const spotifyBtn = document.getElementById('spotifyBtn');
 
 const replitSignup = () => {
     replitButton.disabled = true;
@@ -26,26 +26,25 @@ const getToken = () => {
     tokenBtn.disabled = true;
     alert('Click\n1. Your Application\n2. Bot in the left sidebar\n3. Under "TOKEN" "Copy"')
     window.open('https://discord.com/developers/applications', '_blank');
+    spotifyBtn.disabled = false;
+}
+
+const getSpotify = () => {
+    spotifyBtn.disabled = true;
+    alert("Click\n1. Create an App\n2. App Name and Description doesn't matter\n3. Check both Checkboxes\nClick 'Create'\n4. Copy 'Client ID' and 'Client Secret'")
+    window.open('https://developer.spotify.com/dashboard/applications', '_blank');
     envButton.disabled = false;
 }
 
 const replitEnv = () => {
     envButton.disabled = true;
-    const TOKEN = window.prompt("Discord Bot Token\nYou copied it in the previous step");
+    const TOKEN = window.prompt("Discord Bot Token\nYou copied it in the penultimate step");
     const PREFIX = window.prompt("The Prefix you want\n<prefix>help. Example: !help", "!");
     const SOUNDCLOUD_CLIENT_ID = window.prompt("SoundCloud Client ID. Leave as is for default", "2t9loNQH90kzJcsFCODdigxfp325aq4z");
     const PRESENCE = window.prompt("Bot Activity Text\nText underneath the Name of the Bot");
-    const textarea = document.createElement('textarea');
-    textarea.textContent = JSON.stringify({TOKEN, PREFIX, SOUNDCLOUD_CLIENT_ID, PRESENCE});
-    textarea.style.position = 'fixed';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        alert('Failed copying device auth to the clipboard!');
-    }
-    document.body.removeChild(textarea);
+    const SPOTIFY_CLIENT_ID = window.prompt("Spotify Client ID\nYou copied in the previous step");
+    const SPOTIFY_CLIENT_SECRET = window.prompt("Spotify Client Secret\nYou copied in the previous step");
+    copy(JSON.stringify({TOKEN, PREFIX, SOUNDCLOUD_CLIENT_ID, PRESENCE, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET}));
     envButton.innerHTML = "<p>Successfully copied to clipboard!</prefix>";
     envtut.style.display = "block"  
     startButton.disabled = false;
@@ -73,3 +72,52 @@ Click "Create Cronjob"`
     );
     window.open('https://cron-job.org/en/members/jobs/add/', '_blank');
 };
+
+function fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+  
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+  
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+  
+    document.body.removeChild(textArea);
+  }
+  function copy(text) {
+    if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      return;
+    }
+    navigator.clipboard.writeText(text).then(function() {
+      console.log('Async: Copying to clipboard was successful!');
+    }, function(err) {
+      console.error('Async: Could not copy text: ', err);
+    });
+  }
+
+const debug = () => {
+    replitButton.disabled = false;
+    cloneButton.disabled = false;
+    envButton.disabled = false;
+    startButton.disabled = false;
+    cronsignupButton.disabled = false;
+    CronCreateButton.disabled = false;
+    title.disabled = false;
+    spinning.disabled = false;
+    envtut.disabled = false;
+    tokenBtn.disabled = false;
+    spotifyBtn.disabled = false;
+}
