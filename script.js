@@ -8,7 +8,6 @@ const title = document.querySelector('.title');
 const spinning = document.getElementById('spinning');
 const envtut = document.getElementById('envtut');
 const tokenBtn = document.getElementById('tokenBtn');
-const spotifyBtn = document.getElementById('spotifyBtn');
 
 const replitSignup = () => {
     replitButton.disabled = true;
@@ -26,25 +25,15 @@ const getToken = () => {
     tokenBtn.disabled = true;
     alert('Click\n1. Your Application\n2. Bot in the left sidebar\n3. Under "TOKEN" "Copy"')
     window.open('https://discord.com/developers/applications', '_blank');
-    spotifyBtn.disabled = false;
-}
-
-const getSpotify = () => {
-    spotifyBtn.disabled = true;
-    alert("Click\n1. Create an App\n2. App Name and Description doesn't matter\n3. Check both Checkboxes\nClick 'Create'\n4. Copy 'Client ID' and 'Client Secret'")
-    window.open('https://developer.spotify.com/dashboard/applications', '_blank');
     envButton.disabled = false;
-}
+};
 
 const replitEnv = () => {
     envButton.disabled = true;
     const TOKEN = window.prompt("Discord Bot Token\nYou copied it in the penultimate step");
     const PREFIX = window.prompt("The Prefix you want\n<prefix>help. Example: !help", "!");
-    const SOUNDCLOUD_CLIENT_ID = window.prompt("SoundCloud Client ID. Leave as is for default", "2t9loNQH90kzJcsFCODdigxfp325aq4z");
     const PRESENCE = window.prompt("Bot Activity Text\nText underneath the Name of the Bot");
-    const SPOTIFY_CLIENT_ID = window.prompt("Spotify Client ID\nYou copied in the previous step");
-    const SPOTIFY_CLIENT_SECRET = window.prompt("Spotify Client Secret\nYou copied in the previous step");
-    copy(JSON.stringify({TOKEN, PREFIX, SOUNDCLOUD_CLIENT_ID, PRESENCE, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET}));
+    copy(JSON.stringify({TOKEN, PREFIX, PRESENCE}));
     envButton.innerHTML = "<p>Successfully copied to clipboard!</prefix>";
     envtut.style.display = "block"  
     startButton.disabled = false;
@@ -119,5 +108,4 @@ const debug = () => {
     spinning.disabled = false;
     envtut.disabled = false;
     tokenBtn.disabled = false;
-    spotifyBtn.disabled = false;
 }
