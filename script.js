@@ -8,6 +8,8 @@ const title = document.querySelector('.title');
 const spinning = document.getElementById('spinning');
 const envtut = document.getElementById('envtut');
 const tokenBtn = document.getElementById('tokenBtn');
+const secretBtn = document.getElementById('secretBtn');
+const urlBtn = document.getElementById('urlBtn');
 
 const replitSignup = () => {
     replitButton.disabled = true;
@@ -23,9 +25,16 @@ const cloneMusicbot = () => {
 
 const getToken = () => {
     tokenBtn.disabled = true;
-    alert('Click\n1. Your Application\n2. Bot in the left sidebar\n3. Under "TOKEN" "Copy"')
+    alert('Click\n1. Your Application\n2. Bot in the left sidebar\n3. Under "TOKEN" click "Copy"')
     window.open('https://discord.com/developers/applications', '_blank');
-    envButton.disabled = false;
+    secretBtn.disabled = false;
+};
+
+const getSecret = () => {
+  secretBtn.disabled = true;
+  alert('Click\n1. Your Application\n2. OAuth2 in the left sidebar\n3. Under "CLIENT SECRET" click "Copy"')
+  window.open('https://discord.com/developers/applications', '_blank');
+  envButton.disabled = false;
 };
 
 const replitEnv = () => {
@@ -33,8 +42,9 @@ const replitEnv = () => {
     const TOKEN = window.prompt("Discord Bot Token\nYou copied it in the penultimate step");
     const PREFIX = window.prompt("The Prefix you want\n<prefix>help. Example: !help", "!");
     const PRESENCE = window.prompt("Bot Activity Text\nText underneath the Name of the Bot");
-    copy(JSON.stringify({TOKEN, PREFIX, PRESENCE}));
-    envButton.innerHTML = "<p>Successfully copied to clipboard!</prefix>";
+    const SECRET = window.prompt("Discord Bot Client Secret\nYou copied it in the previous step");
+    copy(JSON.stringify({TOKEN, PREFIX, PRESENCE, SECRET}));
+    envButton.innerHTML = "<p>Successfully copied to clipboard!</p>";
     envtut.style.display = "block"  
     startButton.disabled = false;
 };
@@ -43,8 +53,14 @@ const startReplit = () => {
     startButton.disabled = true;
     envtut.style.display = "none";
     alert('Go back to your repl.it, click start & then copy the url');
-    cronsignupButton.disabled = false;
+    urlBtn.disabled = false;
 };
+
+const ReplitURL = () => {
+    urlBtn.disabled = true;
+    alert("Add the URL to the Environment Variables with key 'WEB' and the URL as the Content\nNow restart your Bot and everything should work!");
+    cronsignupButton.disabled = false;
+}
 
 const cronSignup = async () => {
     cronsignupButton.disabled = true;
@@ -98,14 +114,5 @@ function fallbackCopyTextToClipboard(text) {
   }
 
 const debug = () => {
-    replitButton.disabled = false;
-    cloneButton.disabled = false;
-    envButton.disabled = false;
-    startButton.disabled = false;
-    cronsignupButton.disabled = false;
-    CronCreateButton.disabled = false;
-    title.disabled = false;
-    spinning.disabled = false;
-    envtut.disabled = false;
-    tokenBtn.disabled = false;
+    Array.from(document.getElementsByClassName('btn shadow')).forEach((e) => {e.disabled = false;})
 }
